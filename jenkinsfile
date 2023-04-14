@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage  ('Build Dockerfile') {
+            steps {
+
+                sh 'docker build -t projectg .'
+
+
+            }
+        }
+        stage ('docker run') {
+            steps {
+
+                sh 'docker run -p 90:80 -d projectg'
+            }
+        }
+    }
+}
